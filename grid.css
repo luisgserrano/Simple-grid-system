@@ -1,0 +1,98 @@
+/* best practice reset of box-sizing */
+html {
+  box-sizing: border-box;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+.outline,
+.outline * {
+  border: 1px solid #ccc;
+}
+
+.grid-container {
+  width: 100%;
+  max-width: 1366px; /* you can change to wathever width you want */
+  margin: 0 auto;
+}
+
+/* You should clear the row class because all childrens will be floated */
+.row::before,
+.row::after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+/* hack for IE 6/7 */
+.row {
+  zoom: 1;
+}
+
+/* if all columns are empty, they will stack on top of each other, thats why we use min-height */
+/* all elements that have col- in their class name */
+*[class*="col-"] {
+  float: left;
+  min-height: 1px;
+  width: 8.3333333333%; /* since we want 12 columns, we just made 100 (100% size of the container) / 12 */
+  /* our gutter */
+  padding: 1.6%; /* around 20px in normal monitors */
+  margin: 1% 0;
+}
+
+.col-1 {
+  width: 8.3333333333%; /* 8.3333333333 * 1 */
+}
+
+.col-2 {
+  width: 16.666666667%; /* 8.3333333333 * 2 */
+}
+
+.col-3 {
+  width: 25%; /* 8.3333333333 * 3 */
+}
+
+.col-4 {
+  width: 33.333333333%; /* 8.3333333333 * 4 */
+}
+
+.col-5 {
+  width: 41.666666667%; /* 8.3333333333 * 5 */
+}
+
+.col-6 {
+  width: 50%; /* 8.3333333333 * 6 */
+}
+
+.col-7 {
+  width: 58.333333333%; /* 8.3333333333 * 7 */
+}
+
+.col-8 {
+  width: 66.666666666%; /* 8.3333333333 * 8 */
+}
+
+.col-9 {
+  width: 75%; /* 8.3333333333 * 9 */
+}
+
+.col-10 {
+  width: 83.333333333%; /* 8.3333333333 * 10 */
+}
+
+.col-11 {
+  width: 91.666666666%; /* 8.3333333333 * 11 */
+}
+
+.col-12 {
+  width: 100%; /* 8.3333333333 * 12 */
+}
+
+/* lets get full-width below ipad resolution */
+@media screen and (max-width: 768px) {
+  *[class*="col-"] {
+    width: 100%;
+  }
+}
